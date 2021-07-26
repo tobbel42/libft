@@ -6,32 +6,29 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:21:11 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/06/29 16:56:13 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:04:33 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void static	calloc_bzero(void *s, size_t n)
-{
-	size_t		counter;
-	char		*ptr;
-
-	counter = 0;
-	ptr = (char *)s;
-	while (counter < n)
-	{
-		ptr[counter] = 0;
-		counter++;
-	}
-}
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
+	char	*ptr_copy;
+	size_t	i;
+	size_t	max;
 
-	ptr = malloc(count * size);
-	if (ptr != 0)
-		calloc_bzero(ptr, count * size);
+	max = count * size;
+	ptr = malloc(max);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	ptr_copy = (char *)ptr;
+	while (i < max)
+	{
+		ptr_copy[i] = '\0';
+		i++;
+	}
 	return (ptr);
 }
