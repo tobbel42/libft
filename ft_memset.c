@@ -12,11 +12,16 @@
 
 #include "libft.h"
 
+/*
+//fills the first n bytes of memarea pointed to by s with the constant byte c
+*/
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t		counter;
 	char		*ptr;
 
+	if (!s)
+		return (NULL);
 	ptr = (char *) s;
 	counter = 0;
 	while (counter < n)

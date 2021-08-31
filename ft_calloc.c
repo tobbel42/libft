@@ -12,23 +12,18 @@
 
 #include "libft.h"
 
+/*
+//allocates count blocks of size and set the memory to zero
+*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
-	char	*ptr_copy;
-	size_t	i;
 	size_t	max;
 
 	max = count * size;
 	ptr = malloc(max);
 	if (!ptr)
 		return (NULL);
-	i = 0;
-	ptr_copy = (char *)ptr;
-	while (i < max)
-	{
-		ptr_copy[i] = '\0';
-		i++;
-	}
+	ft_bzero(ptr, max);
 	return (ptr);
 }

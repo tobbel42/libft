@@ -17,7 +17,7 @@ static int	is_set(char c, char const *set)
 	int		i;
 
 	i = 0;
-	while (set[i] != '\0')
+	while (set[i])
 	{
 		if (set[i] == c)
 			return (1);
@@ -26,35 +26,19 @@ static int	is_set(char c, char const *set)
 	return (0);
 }
 
-static void	*trim_memcpy(void *dest, const void *src, size_t n)
-{
-	char		*ptr1;
-	char		*ptr2;
-	size_t		i;
-
-	ptr1 = (char *) src;
-	ptr2 = (char *) dest;
-	i = 0;
-	while (i < n)
-	{
-		ptr2[i] = ptr1[i];
-		i++;
-	}
-	ptr2[i] = '\0';
-	return (dest);
-}
-
+/*
+//trims any char from set of the start and end of s1
+*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int			start;
 	int			end;
 	char		*ptr;
 
+	if (!s1)
+		return (NULL);
 	start = 0;
-	end = 0;
-	while (s1[end] != 0)
-		end++;
-	end--;
+	end = ft_strlen(s1) - 1;
 	while (start <= end && is_set(s1[start], set))
 		start++;
 	while (end > 0 && is_set(s1[end], set))
@@ -63,11 +47,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 		ptr = (char *)malloc(sizeof(char) * 1);
 	else
 		ptr = (char *)malloc((end - start + 2) * sizeof(char));
-	if (ptr == 0)
-		return (0);
+	if (!ptr)
+		return (NULL);
 	if (start > end)
 		ptr[0] = '\0';
 	else
-		trim_memcpy(ptr, &s1[start], end - start + 1);
+		ft_memcpy(ptr, &s1[start], end - start + 1);
 	return (ptr);
 }

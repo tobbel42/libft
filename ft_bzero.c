@@ -12,11 +12,16 @@
 
 #include "libft.h"
 
+/*
+//set n bytes starting from s to zero
+*/
 void	ft_bzero(void *s, size_t n)
 {
 	size_t		counter;
 	char		*ptr;
 
+	if (!s)
+		return ;
 	counter = 0;
 	ptr = (char *)s;
 	while (counter < n)
