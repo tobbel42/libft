@@ -41,17 +41,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (start <= end && is_set(s1[start], set))
 		start++;
-	while (end > 0 && is_set(s1[end], set))
+	while (end >= 0 && is_set(s1[end], set))
 		end--;
 	if (start > end)
-		ptr = (char *)malloc(sizeof(char) * 1);
+		ptr = (char *)ft_calloc(1, 1);
 	else
 		ptr = (char *)malloc((end - start + 2) * sizeof(char));
 	if (!ptr)
 		return (NULL);
-	if (start > end)
-		ptr[0] = '\0';
 	else
-		ft_memcpy(ptr, &s1[start], end - start + 1);
+		ft_strlcpy(ptr, &s1[start], end - start + 2);
 	return (ptr);
 }

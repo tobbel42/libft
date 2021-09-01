@@ -9,6 +9,7 @@ OBJECTS=ft_atoi.o \
 	ft_isascii.o \
 	ft_isdigit.o \
 	ft_isprint.o \
+	ft_isspace.o \
 	ft_itoa.o \
 	ft_memchr.o \
 	ft_memcmp.o \

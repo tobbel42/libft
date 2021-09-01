@@ -25,8 +25,6 @@ int	ft_atoi(const char *nptr)
 	n = 0;
 	i = 0;
 	sign_flag = 1;
-	if (!nptr)
-		return (0);
 	while (ft_isspace(nptr[i]))
 		i++;
 	if (nptr[i] == '-')
@@ -38,7 +36,7 @@ int	ft_atoi(const char *nptr)
 		i++;
 	while (ft_isdigit(nptr[i]))
 	{
-		n = (n * 10) + (nptr[i] - '0');
+		n = (n * 10) + (nptr[i] - 48);
 		i++;
 	}
 	return (n * sign_flag);
